@@ -4,9 +4,10 @@ import numpy as np
 import pandas as pd
 from sklearn import preprocessing
 from sklearn import tree
+from sklearn.ensemble import RandomForestClassifier
 
 # This is the name of the training file.
-training_filename = "datasets/refined.csv"
+training_filename = "yolo.csv"
 
 # Read the csv file.
 reader = pd.read_csv(training_filename)
@@ -39,11 +40,12 @@ reader = np.concatenate((reader_label_transformed, reader_numerical), axis=1)
 
 # Randomly permute the data and select training and test sets.
 indices = np.random.permutation(reader.shape[0])
-training_idx, test_idx = indices[:50000], indices[50000:]
+training_idx, test_idx = indices[:400], indices[400:]
 training, test = reader[training_idx,:], reader[test_idx,:]
 
 # Initialize the decision tree classifier.
-clf = tree.DecisionTreeClassifier()
+# clf = tree.DecisionTreeClassifier()
+clf = RandomForestClassifier(max_depth=10, random_state=0)
 
 # Train on the model.
 clf = clf.fit(training[:, 1:], training[:, 0])
