@@ -7,7 +7,7 @@ from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
 
 # This is the name of the training file.
-training_filename = "yolo.csv"
+training_filename = "datasets/msd_genre_dataset.csv"
 
 # Read the csv file.
 reader = pd.read_csv(training_filename)
