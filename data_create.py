@@ -137,10 +137,10 @@ if __name__ == '__main__':
             res = conn_at.execute(q)
             mbtags = map(lambda x: x[0], res.fetchall())
             artist_is_safe = True
-            for g2 in top50mbtags_names:
-                if g2 != genre and g2 in mbtags:
-                    #print 'artist:',a,'we got both',genre,'and',g2
-                    artist_is_safe = False; break
+            # for g2 in top50mbtags_names:
+            #     if g2 != genre and g2 in mbtags:
+            #         #print 'artist:',a,'we got both',genre,'and',g2
+            #         artist_is_safe = False; break
             if artist_is_safe:
                 genre_artists[genre].add( a )
     print 'number of safe artists for each genre:'

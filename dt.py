@@ -45,14 +45,13 @@ training, test = reader[training_idx,:], reader[test_idx,:]
 
 # Initialize the decision tree classifier.
 # clf = tree.DecisionTreeClassifier()
-clf = RandomForestClassifier(max_depth=10, random_state=0)
+clf = RandomForestClassifier(n_estimators=196, min_samples_split=12, min_samples_leaf=1)
 
 # Train on the model.
 clf = clf.fit(training[:, 1:], training[:, 0])
 
 # Predict on the test examples.
 pred = clf.predict(test[:, 1:])
-
 
 # Calculate the error and check for the accuracy.
 total_error = np.sum(pred != test[:, 0])
