@@ -7,9 +7,15 @@ df_test = pd.read_csv('test.csv')
 
 y_train = df_train['genre'].as_matrix()
 df_train = df_train.drop('genre', axis=1)
+df_train = df_train.drop('track_id', axis=1)
+df_train = df_train.drop('artist_name', axis=1)
+df_train = df_train.drop('title', axis=1)
 
 y_test = df_test['genre'].as_matrix()
 df_test = df_test.drop('genre', axis=1)
+df_test = df_test.drop('track_id', axis=1)
+df_test = df_test.drop('artist_name', axis=1)
+df_test = df_test.drop('title', axis=1)
 
 features=['loudness', 'tempo', 'time_signature', 'key', 'mode', 'duration', 'avg_timbre1', 'avg_timbre2', 'avg_timbre3', 'avg_timbre4', 'avg_timbre5', 'avg_timbre6', 'avg_timbre7', 'avg_timbre8', 'avg_timbre9', 'avg_timbre10', 'avg_timbre11', 'avg_timbre12', 'var_timbre1', 'var_timbre2', 'var_timbre3', 'var_timbre4', 'var_timbre5', 'var_timbre6', 'var_timbre7', 'var_timbre8', 'var_timbre9', 'var_timbre10', 'var_timbre11', 'var_timbre12', 'max_segment_timbre1', 'max_segment_timbre2', 'max_segment_timbre3', 'max_segment_timbre4', 'max_segment_timbre5', 'max_segment_timbre6', 'max_segment_timbre7', 'max_segment_timbre8', 'max_segment_timbre9', 'max_segment_timbre10', 'max_segment_timbre11', 'max_segment_timbre12']
 
@@ -91,8 +97,7 @@ acc_train = accuracy.eval(feed_dict={inputs: X_train, label: labels_train})
 print("Train accuracy: {:3.2f}%".format(acc_train*100.0))
 
 acc_test = accuracy.eval(feed_dict={inputs: X_test, label: labels_test})
-print("Dev accuracy:  {:3.2f}%".format(acc_dev*100.0))
-
+print("Test accuracy:  {:3.2f}%".format(acc_test*100.0))
 
 
 
