@@ -8,7 +8,7 @@ from sklearn.gaussian_process.kernels import ConstantKernel, RBF
 
 from scipy.stats import norm
 from scipy.optimize import minimize
-from loss import sample_loss
+from loss_function import sample_loss
 
 def expected_improvement(x, gaussian_process, evaluated_loss, greater_is_better=False, n_params=1):
     """ expected_improvement
@@ -139,9 +139,6 @@ def bayesian_optimisation(n_iters, sample_loss, bounds, x0=None, n_pre_samples=5
         model = gp.GaussianProcessRegressor(**gp_params)
     else:
         kernel = gp.kernels.Matern()
-        # kernel = gp.kernels.RationalQuadratic()
-        # kernel = gp.kernels.ExpSineSquared()
-        # kernel = gp.kernels.DotProduct()
         model = gp.GaussianProcessRegressor(kernel=kernel,
                                             alpha=alpha,
                                             n_restarts_optimizer=10,
@@ -177,5 +174,5 @@ def bayesian_optimisation(n_iters, sample_loss, bounds, x0=None, n_pre_samples=5
 
     return xp, yp
 
-params, accuracy = bayesian_optimisation(100, sample_loss, np.array([[1, 400], [2, 100], [1, 100]]), alpha=0.01)
+params, accuracy = bayesian_optimisation(80, sample_loss, np.array([[1, 600], [2, 30], [1, 30]]), alpha=0.01)
 print params[np.argmax(accuracy)], np.max(accuracy)

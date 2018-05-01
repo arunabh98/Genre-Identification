@@ -9,7 +9,7 @@ from sklearn.model_selection import cross_val_score
 
 def sample_loss(params):
 	# This is the name of the training file.
-	training_filename = "datasets/msd_genre_dataset.csv"
+	training_filename = "../datasets/msd.csv"
 
 	# Read the csv file.
 	reader = pd.read_csv(training_filename)
