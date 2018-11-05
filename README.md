@@ -1,4 +1,4 @@
-# Genre-Identification
+# Genre Identification
 
 
 Identifying what genre a particular song belongs to has been a cakewalk for humans. Can we train the machines to do this job for us? With this motivation in mind, we used Machine Learning as a tool for implementing this task of genre identification. In this project, we have explored methods for exploratory data analysis, feature selection, hyperparameter optimization, and eventual implementation of several algorithms for classification.
